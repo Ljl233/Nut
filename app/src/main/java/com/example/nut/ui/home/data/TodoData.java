@@ -1,5 +1,8 @@
 package com.example.nut.ui.home.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TodoData {
     private int id;
     private String label;
@@ -80,5 +83,19 @@ public class TodoData {
 
     public void setFinish(boolean finish) {
         isFinish = finish;
+    }
+
+    public static List<List<TodoData>> getFakeData() {
+        List<TodoData> todoDataList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            TodoData todoData = new TodoData(i, "学习", "完成坚果todo界面", 30, 50, false);
+            todoDataList.add(todoData);
+        }
+        List<List<TodoData>> res = new ArrayList<>();
+        res.add(todoDataList);
+        res.add(todoDataList);
+        res.add(todoDataList);
+        res.add(todoDataList);
+        return res;
     }
 }
