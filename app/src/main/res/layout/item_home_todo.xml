@@ -11,12 +11,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:background="@drawable/bg_item_label"
-        android:paddingStart="20dp"
+        android:paddingStart="15dp"
         android:paddingTop="5dp"
-        android:paddingEnd="20dp"
+        android:paddingEnd="15dp"
         android:paddingBottom="5dp"
         android:text="学习"
-        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -82,4 +83,18 @@
         app:layout_constraintEnd_toEndOf="@+id/item_todo_check"
         app:layout_constraintStart_toStartOf="@+id/item_todo_check"
         app:layout_constraintTop_toBottomOf="@+id/item_todo_more" />
+
+    <View
+        android:id="@+id/dotted_line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:background="@drawable/bg_dotted_line"
+        android:layerType="software"
+        app:layout_constraintTop_toBottomOf="@id/item_todo_feel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
