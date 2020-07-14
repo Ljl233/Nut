@@ -12,9 +12,9 @@
         android:layout_marginStart="20dp"
         android:background="@drawable/bg_item_label"
         android:paddingStart="20dp"
-        android:paddingTop="10dp"
+        android:paddingTop="5dp"
         android:paddingEnd="20dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="5dp"
         android:text="学习"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:text="做完物理试卷"
         app:layout_constraintBottom_toTopOf="@+id/item_todo_predict"
@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:text="实际时长"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/item_todo_content"
@@ -61,8 +61,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/item_todo_more"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.493" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/item_todo_more"
@@ -72,8 +71,7 @@
         android:src="@drawable/ic_baseline_dehaze_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/item_todo_feel"

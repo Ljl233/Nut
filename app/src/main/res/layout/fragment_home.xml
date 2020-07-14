@@ -6,10 +6,10 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/home_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:menu="@menu/home_toolbar_menu">
-
         <TextView
             android:id="@+id/home_actionbar_title"
             android:layout_width="wrap_content"
@@ -25,43 +25,48 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/home_label_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="全部"
-            android:textColor="@color/colorTheme"
+            android:textColor="@color/gray"
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/home_label_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="日"
-            android:textColor="@color/colorTheme"
+            android:textColor="@color/gray"
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/home_label_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="周"
-            android:textColor="@color/colorTheme"
+            android:textColor="@color/gray"
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/home_label_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="月"
-            android:textColor="@color/colorTheme"
+            android:textColor="@color/gray"
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/home_label_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="年"
-            android:textColor="@color/colorTheme"
+            android:textColor="@color/gray"
             android:textSize="18sp" />
     </LinearLayout>
 
