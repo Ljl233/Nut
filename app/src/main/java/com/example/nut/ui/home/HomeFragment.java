@@ -156,4 +156,9 @@ public class HomeFragment extends Fragment {
         todoListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         todoListView.setAdapter(mAdapter);
     }
+
+    void statusOnclick(View v) {
+        //todo: 跳转到任务详情界面
+
+    }
 }

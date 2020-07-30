@@ -3,8 +3,9 @@
     <string name="todo">打卡</string>
     <string name="hole">树洞</string>
     <string name="community">社区</string>
-    <string name="mine">我的</string>
     <string name="calendar">日历</string>
     <string name="favorite">喜爱</string>
     <string name="add">添加</string>
+    <string name="mine">我的</string>
+    <string name="nut">坚果</string>
 </resources>
