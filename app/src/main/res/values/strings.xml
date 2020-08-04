@@ -8,4 +8,7 @@
     <string name="add">添加</string>
     <string name="mine">我的</string>
     <string name="nut">坚果</string>
+    <string name="draw_emotion_line"><u>生成心情曲线</u></string>
+    <string name="status_ps">PS:点击确认后我们将为您自动切换主题色，如不需要，可以在“我的”中选择“界面设置关闭”</string>
+    <string name="confirm">确     认</string>
 </resources>

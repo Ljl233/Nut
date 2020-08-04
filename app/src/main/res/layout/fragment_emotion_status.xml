@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Toolbar
+        android:id="@+id/status_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:navigationIcon="@drawable/ic_baseline_navigate_before_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/status_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:text="当前状态为："
+
+        android:textColor="@color/colorTheme"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/status_toolbar" />
+
+    <ImageView
+        android:id="@+id/status_ic_book"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_book"
+        app:layout_constraintBottom_toBottomOf="@id/status_ic_music"
+        app:layout_constraintEnd_toStartOf="@id/status_ic_music"
+        app:layout_constraintTop_toTopOf="@id/status_ic_music" />
+
+    <ImageView
+        android:id="@+id/status_ic_music"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_music"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/status_toolbar" />
+
+    <TextView
+        android:id="@+id/status_status"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:text="愤怒"
+        android:textColor="@color/colorTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/status_text1" />
+
+    <TextView
+        android:id="@+id/status_suggestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:text="或许可以停下来放松一会儿哦～ 或者可以眺望一下远方～"
+        android:textColor="@color/colorTheme"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/status_status" />
+
+    <ImageView
+        android:id="@+id/status_ic_line"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_chart_line"
+        app:layout_constraintEnd_toStartOf="@+id/status_draw_line"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/status_suggestion" />
+
+    <TextView
+        android:id="@+id/status_draw_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/draw_emotion_line"
+        android:textColor="@color/colorTheme"
+        app:layout_constraintBottom_toBottomOf="@id/status_ic_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/status_ic_line"
+        app:layout_constraintTop_toTopOf="@id/status_ic_line"
+        tools:layout_editor_absoluteY="397dp" />
+
+    <TextView
+        android:id="@+id/status_ps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/bg_shadow_corners"
+        android:backgroundTint="#33C8C4C4"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="20dp"
+        android:text="@string/status_ps"
+        android:textColor="@color/colorTheme"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/status_draw_line" />
+
+    <Button
+        android:id="@+id/status_bt_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/bg_shadow_corners"
+        android:backgroundTint="@color/colorTheme"
+        android:text="@string/confirm"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/status_ps" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
