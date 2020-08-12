@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,13 +55,12 @@ public class HomeFragment extends Fragment {
 
     private void initToolbar() {
         toolbar.setOnMenuItemClickListener(item -> {
-
             switch (item.getItemId()) {
                 case R.id.calendar:
                     //todo: jump to calendar
                     break;
                 case R.id.love:
-                    //todo: jump to favorite
+                    NavHostFragment.findNavController(this).navigate(R.id.emotion_status_dest);
                     break;
                 case R.id.add:
                     //todo: jump to add fragment
@@ -151,7 +151,6 @@ public class HomeFragment extends Fragment {
 
     private void initAdapter() {
         mAdapter = new TodolistAdapter(TodoData.getFakeData());
-        Toast.makeText(this.getContext(), "initadapter", Toast.LENGTH_SHORT).show();
         todoListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         todoListView.setAdapter(mAdapter);
     }

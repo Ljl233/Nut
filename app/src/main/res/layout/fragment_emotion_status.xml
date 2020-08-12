@@ -54,7 +54,6 @@
         android:layout_height="150dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/bg_circle"
-        android:backgroundTint="@android:color/holo_orange_light"
         android:elevation="5dp"
         android:gravity="center"
         android:text="愤怒"
