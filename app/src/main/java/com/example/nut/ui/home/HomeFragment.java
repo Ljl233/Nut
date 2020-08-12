@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
         toolbar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.calendar:
-                    //todo: jump to calendar
+                    NavHostFragment.findNavController(this).navigate(R.id.calendar_dest);
                     break;
                 case R.id.love:
                     NavHostFragment.findNavController(this).navigate(R.id.emotion_status_dest);

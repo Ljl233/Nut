@@ -25,5 +25,10 @@
         android:id="@+id/emotion_status_dest"
         android:name="com.example.nut.ui.home.emotion.EmotionStatusFragment"
         android:label="emotion_status"
-        tools:layout="@layout/fragment_emotion_status"/>
+        tools:layout="@layout/fragment_emotion_status" />
+    <fragment
+        android:id="@+id/calendar_dest"
+        android:name="com.example.nut.ui.calender.CalendarFragment"
+        android:label="calendar"
+        tools:layout="@layout/fragment_calender" />
 </navigation>
