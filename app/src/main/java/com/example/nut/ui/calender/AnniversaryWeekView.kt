@@ -3,6 +3,7 @@ package com.example.nut.ui.calender
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.util.Log
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.WeekView
 
@@ -14,6 +15,7 @@ class AnniversaryWeekView(mContent: Context) : WeekView(mContent) {
 
     override fun onDrawText(canvas: Canvas?, calendar: Calendar?, x: Int, hasScheme: Boolean, isSelected: Boolean) {
         mPaint.setColor(calendar?.schemeColor!!)
+        Log.e("simpleName",calendar.schemeColor.toString())
         canvas?.drawText(calendar.scheme!!, (x + mItemWidth / 2).toFloat(), y + mTextBaseLine, mPaint)
     }
 
