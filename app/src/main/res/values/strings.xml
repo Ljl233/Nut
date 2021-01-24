@@ -13,4 +13,7 @@
     <string name="confirm">确     认</string>
     <string name="search">搜索</string>
     <string name="setting">设置</string>
+    <string name="app_name_chinese">坚果</string>
+    <string name="login_account_hint">账号/手机号/密码</string>
+    <string name="login_psw_hint">输入密码</string>
 </resources>

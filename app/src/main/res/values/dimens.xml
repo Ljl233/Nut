@@ -2,4 +2,5 @@
 <resources>
     <dimen name="mine_tv_size">18sp</dimen>
     <dimen name="mine_tv_margin_start">10dp</dimen>
+    <dimen name="login_edit_height">80dp</dimen>
 </resources>

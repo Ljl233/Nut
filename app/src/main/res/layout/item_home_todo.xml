@@ -6,6 +6,18 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/item_todo_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="月"
+        android:textColor="@color/colorTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/item_todo_label"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="@id/item_todo_label" />
+
+    <TextView
         android:id="@+id/item_todo_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,11 +28,12 @@
         android:paddingEnd="15dp"
         android:paddingBottom="5dp"
         android:text="学习"
+        android:layout_marginBottom="10dp"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/item_todo_type" />
 
     <TextView
         android:id="@+id/item_todo_content"
@@ -57,8 +70,8 @@
 
     <CheckBox
         android:id="@+id/item_todo_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="22dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/item_todo_more"
@@ -95,6 +108,6 @@
         app:layout_constraintTop_toBottomOf="@id/item_todo_feel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
