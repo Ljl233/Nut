@@ -3,6 +3,7 @@ package com.example.nut.database
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import java.util.*
 
 @Dao
 interface TaskDAO {
@@ -28,6 +29,7 @@ interface TaskDAO {
 
 
 @Database(entities = [Task::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class TaskDatabase : RoomDatabase() {
     abstract val taskDao: TaskDAO
 }
@@ -46,4 +48,16 @@ fun getDatabase(context: Context): TaskDatabase {
     }
 
     return INSTANCE
+}
+
+class Converters {
+    @TypeConverter
+    fun fromTimestamp(value: Long?): Date? {
+        return value?.let { Date(it) }
+    }
+
+    @TypeConverter
+    fun dateToTimestamp(date: Date?): Long? {
+        return date?.time?.toLong()
+    }
 }
