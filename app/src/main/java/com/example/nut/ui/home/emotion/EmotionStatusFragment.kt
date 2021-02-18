@@ -10,7 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavHostController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.nut.R
 
 class EmotionStatusFragment : Fragment() {
@@ -21,6 +24,10 @@ class EmotionStatusFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_emotion_status, container, false)
 
         mTvStatus = root.findViewById(R.id.status_status)
+        val toolbar = root.findViewById<Toolbar>(R.id.status_toolbar)
+        toolbar.setNavigationOnClickListener {
+            NavHostFragment.findNavController(this).popBackStack()
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val background = mTvStatus.background

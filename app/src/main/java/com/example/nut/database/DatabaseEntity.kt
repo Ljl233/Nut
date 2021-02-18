@@ -9,8 +9,11 @@ import java.util.*
 data class Task constructor(
         @PrimaryKey
         val id: Int,
-        val cycle: String,
+        //循环时间:day,week,month,year,custom
+        val type: String,
+        // 学习，工作
         val tag: String,
+        val content: String,
         val star: Int,
         val date: Date,
         //预计时间
@@ -19,5 +22,6 @@ data class Task constructor(
         val actualTime: Int,
         //已进行时间
         val finishedTime: Int,
-        val finished: Boolean
+        val finished: Boolean,
+        val feeling: String
 )

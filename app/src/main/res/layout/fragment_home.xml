@@ -69,6 +69,15 @@
             android:text="年"
             android:textColor="@color/gray"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/home_label_custom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="自定义"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

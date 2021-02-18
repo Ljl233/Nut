@@ -1,4 +1,4 @@
-package com.example.nut.ui.home.data;
+package com.example.nut.ui.home.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,13 +9,13 @@ import java.util.*
 interface TaskDAO {
 
     @Query("select * from Task")
-    fun getAllTasks(): LiveData<List<Task>>
+    fun getAllTasks(): List<Task>
 
     @Query("select * from Task where not finished")
-    fun getUnFinishedTasks(): LiveData<List<Task>>
+    fun getUnFinishedTasks(): List<Task>
 
     @Query("select * from Task where finished")
-    fun getFinishedTasks(): LiveData<List<Task>>
+    fun getFinishedTasks(): List<Task>
 
     @Query("select * from Task where id = :id")
     fun getTask(id: Int): Task
@@ -25,6 +25,9 @@ interface TaskDAO {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(task: Task)
+
+    @Delete
+    fun delete(task: Task)
 }
 
 
@@ -38,13 +41,13 @@ private lateinit var INSTANCE: TaskDatabase
 
 fun getDatabase(context: Context): TaskDatabase {
     synchronized(TaskDatabase::class.java) {
-        if (!INSTANCE.isOpen) {
+//        if (INSTANCE == null || !INSTANCE.isOpen) {
             INSTANCE = Room.databaseBuilder(
                     context.applicationContext,
                     TaskDatabase::class.java,
                     "tasks")
                     .build()
-        }
+//        }
     }
 
     return INSTANCE
