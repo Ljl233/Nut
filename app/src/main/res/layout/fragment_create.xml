@@ -309,6 +309,7 @@
         android:layout_height="20dp"
         android:layout_marginLeft="32dp"
         android:background="@drawable/bg_create_tag_more"
+        android:inputType="number"
         android:maxLength="2"
         app:layout_constraintBottom_toBottomOf="@id/create_tv_hour"
         app:layout_constraintRight_toLeftOf="@id/create_tv_minute"

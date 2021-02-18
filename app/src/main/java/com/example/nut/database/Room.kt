@@ -17,9 +17,6 @@ interface TaskDAO {
     @Query("select * from Task where finished")
     fun getFinishedTasks(): List<Task>
 
-    @Query("select * from Task where id = :id")
-    fun getTask(id: Int): Task
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(task: Task)
 

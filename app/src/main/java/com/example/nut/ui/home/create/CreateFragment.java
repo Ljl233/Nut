@@ -1,5 +1,6 @@
 package com.example.nut.ui.home.create;
 
+import android.app.TaskStackBuilder;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.nut.R;
 import com.example.nut.database.Task;
@@ -36,7 +38,11 @@ public class CreateFragment extends DialogFragment {
     private String mContent;
     private int star;
     private String mTag;
+    private OnConfirmListener mListener;
 
+    public CreateFragment(OnConfirmListener listener) {
+        mListener = listener;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -172,8 +178,9 @@ public class CreateFragment extends DialogFragment {
 
         //预计时间
         mETHour = root.findViewById(R.id.create_schedule_hour);
-        mEDMin = root.findViewById(R.id.create_tv_minute);
+        mEDMin = root.findViewById(R.id.create_schedule_minute);
 
+        mConfirm = root.findViewById(R.id.create_confirm);
         mConfirm.setOnClickListener(v -> {
             mContent = mETName.getText().toString();
             if (mContent.isEmpty()) {
@@ -188,15 +195,26 @@ public class CreateFragment extends DialogFragment {
                 }
             }
             Date date = new Date(System.currentTimeMillis());
-            int hour = Integer.parseInt(mETHour.getText().toString());
-            if (hour > 23) hour = 23;
-            int minute = Integer.parseInt(mEDMin.getText().toString());
-            if (minute > 60) minute = 60;
+            int hour = 0;
+            if (!mETHour.getText().toString().isEmpty()) {
+                hour = Integer.parseInt(mETHour.getText().toString());
+                if (hour > 23) hour = 23;
+            }
+
+            int minute = 0;
+            if (!mEDMin.getText().toString().isEmpty()) {
+                minute = Integer.parseInt(mEDMin.getText().toString());
+                if (minute > 60) minute = 60;
+            }
             int schedule = hour * 60 + minute;
             Task task = new Task(mContent, mType, mTag, star, date, schedule, 0, 0, false, null);
-            ((HomeFragment) getParentFragment()).commitTask(task);
+            mListener.confirm(task);
+            dismiss();
         });
     }
 
+    public interface OnConfirmListener {
+        void confirm(Task task);
+    }
 
 }

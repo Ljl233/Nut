@@ -8,7 +8,16 @@
     <fragment
         android:id="@+id/home_dest"
         android:name="com.example.nut.ui.home.view.HomeFragment"
-        android:label="home" />
+        android:label="home">
+        <action
+            android:id="@+id/action_home_dest_to_emotion_status_dest"
+            app:destination="@id/emotion_status_dest" />
+    </fragment>
+    <fragment
+        android:id="@+id/create_dest"
+        android:name="com.example.nut.ui.home.create.CreateFragment"
+        android:label="create"
+        tools:layout="@layout/fragment_create"></fragment>
     <fragment
         android:id="@+id/community_dest"
         android:name="com.example.nut.ui.community.CommunityFragment"

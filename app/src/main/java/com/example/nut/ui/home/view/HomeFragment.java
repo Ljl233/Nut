@@ -98,9 +98,9 @@ public class HomeFragment extends Fragment implements HomeContract.View {
         }
         ft.addToBackStack(null);
 
-        CreateFragment fragment = new CreateFragment();
+        CreateFragment fragment = new CreateFragment(this::commitTask);
         fragment.show(ft, "dialog");
-
+//        NavHostFragment.findNavController(this).navigate(R.id.create_dest);
     }
 
     private void initLabel(View root) {

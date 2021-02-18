@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nut.R;
 import com.example.nut.database.Task;
-import com.example.nut.ui.home.model.TodoData;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -27,7 +26,7 @@ public class TodolistAdapter extends RecyclerView.Adapter {
     private List<Task> yearTodos = new ArrayList<>();
     private List<Task> customTodos = new ArrayList<>();
 
-    private LinkedList<Task> todos;
+    private LinkedList<Task> todos = new LinkedList<>();
 
 
     private final static int VIEW_TYPE_DELIVER = 0;
@@ -40,8 +39,10 @@ public class TodolistAdapter extends RecyclerView.Adapter {
     private int curLabel = LABEL_ALL;
 
     public TodolistAdapter(List<Task> todos) {
-        this.todos.addAll(todos);
-        deliverTodos(todos);
+        if (todos != null) {
+            this.todos.addAll(todos);
+            deliverTodos(todos);
+        }
     }
 
     private void deliverTodos(List<Task> todos) {
@@ -147,13 +148,14 @@ public class TodolistAdapter extends RecyclerView.Adapter {
 
     class VH extends RecyclerView.ViewHolder {
 
-        private TextView tvLabel, tvContent, tvPredict, tvReal, tvFeel;
+        private TextView tvType, tvTag, tvContent, tvPredict, tvReal, tvFeel;
         private CheckBox checkBox;
 
         public VH(@NonNull View itemView) {
             super(itemView);
 
-            tvLabel = itemView.findViewById(R.id.item_todo_label);
+            tvType = itemView.findViewById(R.id.item_todo_type);
+            tvTag = itemView.findViewById(R.id.item_todo_tag);
             tvContent = itemView.findViewById(R.id.item_todo_content);
             tvPredict = itemView.findViewById(R.id.item_todo_predict);
             tvReal = itemView.findViewById(R.id.item_todo_realtime);
@@ -163,7 +165,24 @@ public class TodolistAdapter extends RecyclerView.Adapter {
         }
 
         private void bindView(Task data) {
-            tvLabel.setText(data.getType());
+            switch (data.getType()) {
+                case "day":
+                    tvType.setText("日");
+                    break;
+                case "week":
+                    tvType.setText("周");
+                    break;
+                case "month":
+                    tvType.setText("月");
+                    break;
+                case "year":
+                    tvType.setText("年");
+                    break;
+                case "custom":
+                    tvType.setText("自定义");
+                    break;
+            }
+            tvTag.setText(data.getTag());
             tvContent.setText(data.getContent());
             String predict = "预计时长:" + data.getSchedule();
             tvPredict.setText(predict);
@@ -173,7 +192,6 @@ public class TodolistAdapter extends RecyclerView.Adapter {
             tvFeel.setOnClickListener(v -> {
                 //todo: 跳转
             });
-
         }
     }
 
