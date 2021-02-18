@@ -14,6 +14,7 @@ import com.example.nut.database.Task;
 import com.example.nut.ui.home.model.TodoData;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static com.example.nut.ui.home.view.HomeFragment.*;
@@ -26,7 +27,7 @@ public class TodolistAdapter extends RecyclerView.Adapter {
     private List<Task> yearTodos = new ArrayList<>();
     private List<Task> customTodos = new ArrayList<>();
 
-    private List<Task> todos;
+    private LinkedList<Task> todos;
 
 
     private final static int VIEW_TYPE_DELIVER = 0;
@@ -39,7 +40,7 @@ public class TodolistAdapter extends RecyclerView.Adapter {
     private int curLabel = LABEL_ALL;
 
     public TodolistAdapter(List<Task> todos) {
-        this.todos = todos;
+        this.todos.addAll(todos);
         deliverTodos(todos);
     }
 
@@ -134,9 +135,14 @@ public class TodolistAdapter extends RecyclerView.Adapter {
     }
 
     public void addTodos(List<Task> tasks) {
-        todos = tasks;
+        todos.addAll(tasks);
         deliverTodos(todos);
         notifyDataSetChanged();
+    }
+
+    public void addTask(Task task) {
+        todos.addFirst(task);
+        notifyItemChanged(0);
     }
 
     class VH extends RecyclerView.ViewHolder {

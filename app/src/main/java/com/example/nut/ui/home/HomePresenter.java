@@ -31,7 +31,8 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void addTask(Task task) {
-        mRepository.addTask(task);
+        Thread thread = new Thread(() -> mRepository.addTask(task));
+        thread.start();
     }
 
     @Override

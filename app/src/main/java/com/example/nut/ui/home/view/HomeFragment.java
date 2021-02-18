@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -198,5 +199,10 @@ public class HomeFragment extends Fragment implements HomeContract.View {
 
     }
 
+    public void commitTask(Task task) {
+        mPresenter.addTask(task);
+        mAdapter.addTask(task);
+        Toast.makeText(this.getContext(), "commit task", Toast.LENGTH_SHORT).show();
+    }
 
 }
