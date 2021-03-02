@@ -50,7 +50,7 @@
         tools:text="今日任务完成(2021-01-02)" />
 
     <TextView
-        android:id="@+id/finish_tv_todo"
+        android:id="@+id/finish_tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -68,8 +68,8 @@
         android:layout_height="wrap_content"
         android:text="已完成"
         android:textSize="24sp"
-        app:layout_constraintLeft_toRightOf="@id/finish_tv_todo"
-        app:layout_constraintTop_toTopOf="@id/finish_tv_todo" />
+        app:layout_constraintLeft_toRightOf="@id/finish_tv_content"
+        app:layout_constraintTop_toTopOf="@id/finish_tv_content" />
 
     <Button
         android:id="@+id/finish_close"

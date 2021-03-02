@@ -25,6 +25,7 @@ import com.example.nut.database.Task;
 import com.example.nut.ui.home.HomeContract;
 import com.example.nut.ui.home.HomePresenter;
 import com.example.nut.ui.home.create.CreateFragment;
+import com.example.nut.ui.home.finish.FinishFragment;
 import com.example.nut.ui.home.model.TodoData;
 
 import java.util.Calendar;
@@ -195,10 +196,23 @@ public class HomeFragment extends Fragment implements HomeContract.View {
         mPresenter.getTodoList(tasks -> mAdapter.addTodos(tasks));
 
         mAdapter.setOnCheckedChangedListener((task, isChecked) -> {
-            if (!isChecked ^ task.getFinished()){
-                task.setFinished(isChecked);
-                mPresenter.updateTask(task);
+
+            boolean oldStatus = task.getFinished();
+            if (oldStatus) {
+                if (!isChecked){
+                    task.setFinished(false);
+                    mPresenter.updateTask(task);
+                    //减坚果
+                }
+            } else {
+                if (isChecked) {
+                    task.setFinished(true);
+                    mPresenter.updateTask(task);
+                    NavHostFragment.findNavController(this)
+                            .navigate(R.id.finish_dest, FinishFragment.getBundle(task, 10));
+                }
             }
+
         });
     }
 

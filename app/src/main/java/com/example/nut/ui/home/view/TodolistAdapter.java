@@ -202,12 +202,8 @@ public class TodolistAdapter extends RecyclerView.Adapter {
             });
 
             if (mListener != null) {
-                checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        mListener.onCheckedChanged(data, isChecked);
-                    }
-                });
+                checkBox.setOnCheckedChangeListener((buttonView, isChecked) ->
+                        mListener.onCheckedChanged(data, isChecked));
             }
         }
     }
