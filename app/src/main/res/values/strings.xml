@@ -19,4 +19,6 @@
     <string name="login_auth_hint">验证码</string>
     <string name="login_check_hint">确认密码</string>
     <string name="account"><u>已有账号</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
