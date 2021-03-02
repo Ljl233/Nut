@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,7 +29,6 @@ public class TodolistAdapter extends RecyclerView.Adapter {
 
     private LinkedList<Task> todos = new LinkedList<>();
 
-
     private final static int VIEW_TYPE_DELIVER = 0;
     private final static int VIEW_TYPE_TODO = 1;
 
@@ -37,6 +37,9 @@ public class TodolistAdapter extends RecyclerView.Adapter {
     private int monthTodosSize;
     private int yearTodosSize;
     private int curLabel = LABEL_ALL;
+
+    //每个Item checkbox的监听器
+    private OnCheckedChangeListener mListener;
 
     public TodolistAdapter(List<Task> todos) {
         if (todos != null) {
@@ -146,6 +149,10 @@ public class TodolistAdapter extends RecyclerView.Adapter {
         notifyItemChanged(0);
     }
 
+    public void setOnCheckedChangedListener(OnCheckedChangeListener listener) {
+        mListener = listener;
+    }
+
     class VH extends RecyclerView.ViewHolder {
 
         private TextView tvType, tvTag, tvContent, tvPredict, tvReal, tvFeel;
@@ -161,6 +168,7 @@ public class TodolistAdapter extends RecyclerView.Adapter {
             tvReal = itemView.findViewById(R.id.item_todo_realtime);
             tvFeel = itemView.findViewById(R.id.item_todo_feel);
             checkBox = itemView.findViewById(R.id.item_todo_check);
+
 
         }
 
@@ -192,6 +200,15 @@ public class TodolistAdapter extends RecyclerView.Adapter {
             tvFeel.setOnClickListener(v -> {
                 //todo: 跳转
             });
+
+            if (mListener != null) {
+                checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        mListener.onCheckedChanged(data, isChecked);
+                    }
+                });
+            }
         }
     }
 
@@ -199,4 +216,8 @@ public class TodolistAdapter extends RecyclerView.Adapter {
         curLabel = targetLabel;
         notifyDataSetChanged();
     }
+}
+
+interface OnCheckedChangeListener {
+    void onCheckedChanged(Task task, boolean isChecked);
 }

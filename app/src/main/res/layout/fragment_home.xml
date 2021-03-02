@@ -87,12 +87,12 @@
         android:layout_weight="1" />
 
     <TextView
+        android:id="@+id/home_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/home_status"
-        android:text="正在进行“写报告”，以进行20min..."
         android:layout_marginStart="10dp"
-        android:onClick="statusOnclick"/>
+        android:text="正在进行“写报告”，以进行20min..."
+        android:visibility="gone" />
 
 
 </LinearLayout>

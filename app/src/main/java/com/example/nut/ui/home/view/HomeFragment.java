@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -192,12 +193,15 @@ public class HomeFragment extends Fragment implements HomeContract.View {
         todoListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         todoListView.setAdapter(mAdapter);
         mPresenter.getTodoList(tasks -> mAdapter.addTodos(tasks));
+
+        mAdapter.setOnCheckedChangedListener((task, isChecked) -> {
+            if (!isChecked ^ task.getFinished()){
+                task.setFinished(isChecked);
+                mPresenter.updateTask(task);
+            }
+        });
     }
 
-    void statusOnclick(View v) {
-        //todo: 跳转到任务详情界面
-
-    }
 
     public void commitTask(Task task) {
         mPresenter.addTask(task);

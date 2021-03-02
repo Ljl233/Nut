@@ -10,17 +10,17 @@ data class Task constructor(
         @PrimaryKey
         val content: String,
         //循环时间:day,week,month,year,custom
-        val type: String,
+        var type: String,
         // 学习，工作
-        val tag: String,
-        val star: Int,
-        val date: Date,
+        var tag: String,
+        var star: Int,
+        var date: Date,
         //预计时间
-        val schedule: Int,
+        var schedule: Int,
         //实际时间
-        val actualTime: Int?,
+        var actualTime: Int?,
         //已进行时间
-        val finishedTime: Int?,
-        val finished: Boolean,
-        val feeling: String?
+        var finishedTime: Int?,
+        var finished: Boolean,
+        var feeling: String?
 )
