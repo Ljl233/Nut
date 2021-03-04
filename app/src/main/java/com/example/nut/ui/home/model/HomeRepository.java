@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.nut.database.RoomKt;
 import com.example.nut.database.Task;
-import com.example.nut.database.TaskDAO;
+import com.example.nut.database.TaskDao;
 import com.example.nut.database.TaskDatabase;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import io.reactivex.Single;
 
 public class HomeRepository {
     private final TaskDatabase taskDatabase;
-    private final TaskDAO taskDAO;
+    private final TaskDao taskDAO;
 
     public HomeRepository(Context context) {
         taskDatabase = RoomKt.getDatabase(context);

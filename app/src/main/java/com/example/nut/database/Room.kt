@@ -1,14 +1,13 @@
 package com.example.nut.database
 
 import android.content.Context
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import io.reactivex.Completable
 import io.reactivex.Single
 import java.util.*
 
 @Dao
-interface TaskDAO {
+interface TaskDao {
 
     @Query("select * from Task")
     fun getAllTasks(): Single<List<Task>>
@@ -29,11 +28,41 @@ interface TaskDAO {
     fun delete(task: Task): Single<Int>
 }
 
+@Dao
+interface UserDao {
+    @Query("select name from User where account = :account")
+    fun getUserName(account: String): Single<String>
 
-@Database(entities = [Task::class], version = 1)
+    @Query("select avatar from User where account = :account")
+    fun getAvatar(account: String): Single<String>
+
+    @Query("select coin from User where account = :account")
+    fun getCoin(account: String): Single<Int>
+
+    @Query("select slogan from User where account = :account")
+    fun getSlogan(account: String): Single<Int>
+
+    @Query("select sex from User where account = :account")
+    fun getSex(account: String): Single<String>
+
+    @Query("select * from User")
+    fun getUser(): Single<List<User>>
+
+    @Query("select * from User where account = :account")
+    fun getUser(account: String): Single<User>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addUser(user: User): Completable
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun update(user: User): Completable
+}
+
+@Database(entities = [Task::class, User::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class TaskDatabase : RoomDatabase() {
-    abstract val taskDao: TaskDAO
+    abstract val taskDao: TaskDao
+    abstract val userDao: UserDao
 }
 
 private lateinit var INSTANCE: TaskDatabase

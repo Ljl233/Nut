@@ -49,7 +49,7 @@
         tools:layout="@layout/fragment_calender" />
     <fragment
         android:id="@+id/info_dest"
-        android:name="com.example.nut.ui.mine.InforFragment"
+        android:name="com.example.nut.ui.mine.InfoFragment"
         android:label="info"
         tools:layout="@layout/fragment_info" />
     <dialog

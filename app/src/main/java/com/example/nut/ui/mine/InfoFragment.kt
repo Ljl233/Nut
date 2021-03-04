@@ -16,10 +16,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [InforFragment.newInstance] factory method to
+ * Use the [InfoFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class InforFragment : Fragment() {
+class InfoFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -42,8 +42,13 @@ class InforFragment : Fragment() {
             NavHostFragment.findNavController(this).popBackStack()
         }
 
-
+        initView()
         return root
+    }
+
+    private fun initView() {
+
+
     }
 
     companion object {
@@ -58,7 +63,7 @@ class InforFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-                InforFragment().apply {
+                InfoFragment().apply {
                     arguments = Bundle().apply {
                         putString(ARG_PARAM1, param1)
                         putString(ARG_PARAM2, param2)

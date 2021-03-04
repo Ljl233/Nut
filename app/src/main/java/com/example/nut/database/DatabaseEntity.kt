@@ -25,3 +25,17 @@ data class Task constructor(
         var feeling: String?,
         var emotion: String?
 )
+
+@Entity
+data class User constructor(
+        @PrimaryKey
+        val account: Int,
+        var psw: Int,
+        var name: String,
+        var sex: String?,
+        var coin: Int?,
+        var slogan: String?,
+        var avatar: String?,
+        var birthday: String?,
+        var job: String?
+)
