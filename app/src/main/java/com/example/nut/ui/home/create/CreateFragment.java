@@ -207,7 +207,7 @@ public class CreateFragment extends DialogFragment {
                 if (minute > 60) minute = 60;
             }
             int schedule = hour * 60 + minute;
-            Task task = new Task(mContent, mType, mTag, star, date, schedule, 0, 0, false, null);
+            Task task = new Task(mContent, mType, mTag, star, date, schedule, 0, 0, false, null, null);
             mListener.confirm(task);
             dismiss();
         });

@@ -102,7 +102,6 @@ public class HomeFragment extends Fragment implements HomeContract.View {
 
         CreateFragment fragment = new CreateFragment(this::commitTask);
         fragment.show(ft, "dialog");
-//        NavHostFragment.findNavController(this).navigate(R.id.create_dest);
     }
 
     private void initLabel(View root) {
@@ -193,21 +192,46 @@ public class HomeFragment extends Fragment implements HomeContract.View {
         mAdapter = new TodolistAdapter(null);
         todoListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         todoListView.setAdapter(mAdapter);
-        mPresenter.getTodoList(tasks -> mAdapter.addTodos(tasks));
+        mPresenter.getTodoList(new HomePresenter.Callback<List<Task>>() {
+            @Override
+            public void onReceiveData(List<Task> tasks) {
+                mAdapter.addTodos(tasks);
+                Toast.makeText(getContext(), "共有" + tasks.size() + "条", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                throwable.printStackTrace();
+            }
+        });
 
         mAdapter.setOnCheckedChangedListener((task, isChecked) -> {
 
+            HomePresenter.Callback<Void> callback = new HomePresenter.Callback<Void>() {
+                @Override
+                public void onReceiveData(Void data) {
+                    Toast.makeText(getContext(), "修改成功", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    throwable.printStackTrace();
+                    Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            };
+
             boolean oldStatus = task.getFinished();
             if (oldStatus) {
-                if (!isChecked){
+                if (!isChecked) {
                     task.setFinished(false);
-                    mPresenter.updateTask(task);
+                    mPresenter.updateTask(task, callback);
                     //减坚果
                 }
             } else {
                 if (isChecked) {
                     task.setFinished(true);
-                    mPresenter.updateTask(task);
+                    mPresenter.updateTask(task, callback);
                     NavHostFragment.findNavController(this)
                             .navigate(R.id.finish_dest, FinishFragment.getBundle(task, 10));
                 }
@@ -218,7 +242,18 @@ public class HomeFragment extends Fragment implements HomeContract.View {
 
 
     public void commitTask(Task task) {
-        mPresenter.addTask(task);
+        mPresenter.addTask(task, new HomePresenter.Callback<Void>() {
+            @Override
+            public void onReceiveData(Void data) {
+                Toast.makeText(getContext(), "添加成功", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                throwable.printStackTrace();
+            }
+        });
         mAdapter.addTask(task);
         Toast.makeText(this.getContext(), "commit task", Toast.LENGTH_SHORT).show();
     }

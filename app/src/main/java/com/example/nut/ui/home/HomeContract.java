@@ -10,13 +10,13 @@ public interface HomeContract {
     }
 
     interface Presenter {
-        void getTodoList(HomePresenter.Callback callback);
+        void getTodoList(HomePresenter.Callback<List<Task>> callback);
 
-        void deleteTask(Task task);
+        void deleteTask(Task task, HomePresenter.Callback<Integer> callback);
 
-        void addTask(Task task);
+        void addTask(Task task, HomePresenter.Callback<Void> callback);
 
-        void updateTask(Task task);
+        void updateTask(Task task, HomePresenter.Callback<Void> callback);
 
     }
 }

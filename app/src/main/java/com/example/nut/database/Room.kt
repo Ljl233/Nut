@@ -3,28 +3,30 @@ package com.example.nut.database
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import io.reactivex.Completable
+import io.reactivex.Single
 import java.util.*
 
 @Dao
 interface TaskDAO {
 
     @Query("select * from Task")
-    fun getAllTasks(): List<Task>
+    fun getAllTasks(): Single<List<Task>>
 
     @Query("select * from Task where not finished")
-    fun getUnFinishedTasks(): List<Task>
+    fun getUnFinishedTasks(): Single<List<Task>>
 
     @Query("select * from Task where finished")
-    fun getFinishedTasks(): List<Task>
+    fun getFinishedTasks(): Single<List<Task>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(task: Task)
+    fun insert(task: Task): Completable
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(task: Task)
+    fun update(task: Task): Completable
 
     @Delete
-    fun delete(task: Task)
+    fun delete(task: Task): Single<Int>
 }
 
 
@@ -39,11 +41,11 @@ private lateinit var INSTANCE: TaskDatabase
 fun getDatabase(context: Context): TaskDatabase {
     synchronized(TaskDatabase::class.java) {
 //        if (INSTANCE == null || !INSTANCE.isOpen) {
-            INSTANCE = Room.databaseBuilder(
-                    context.applicationContext,
-                    TaskDatabase::class.java,
-                    "tasks")
-                    .build()
+        INSTANCE = Room.databaseBuilder(
+                context.applicationContext,
+                TaskDatabase::class.java,
+                "tasks")
+                .build()
 //        }
     }
 

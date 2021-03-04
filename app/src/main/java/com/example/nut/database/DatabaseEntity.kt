@@ -22,5 +22,6 @@ data class Task constructor(
         //已进行时间
         var finishedTime: Int?,
         var finished: Boolean,
-        var feeling: String?
+        var feeling: String?,
+        var emotion: String?
 )

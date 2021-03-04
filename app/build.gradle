@@ -48,9 +48,13 @@ dependencies {
     implementation 'com.haibin:calendarview:3.6.8'
 
     // Room dependency
-    def room_version = "2.1.0-alpha06"
+    def room_version = "2.1.0"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    implementation "androidx.room:room-rxjava2:$room_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$room_version"
+
 }
 repositories {
     mavenCentral()

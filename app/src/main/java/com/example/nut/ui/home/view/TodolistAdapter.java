@@ -169,7 +169,6 @@ public class TodolistAdapter extends RecyclerView.Adapter {
             tvFeel = itemView.findViewById(R.id.item_todo_feel);
             checkBox = itemView.findViewById(R.id.item_todo_check);
 
-
         }
 
         private void bindView(Task data) {
@@ -205,6 +204,7 @@ public class TodolistAdapter extends RecyclerView.Adapter {
                 checkBox.setOnCheckedChangeListener((buttonView, isChecked) ->
                         mListener.onCheckedChanged(data, isChecked));
             }
+            checkBox.setChecked(data.getFinished());
         }
     }
 
