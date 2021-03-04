@@ -40,7 +40,7 @@ interface UserDao {
     fun getCoin(account: String): Single<Int>
 
     @Query("select slogan from User where account = :account")
-    fun getSlogan(account: String): Single<Int>
+    fun getSlogan(account: String): Single<String>
 
     @Query("select sex from User where account = :account")
     fun getSex(account: String): Single<String>

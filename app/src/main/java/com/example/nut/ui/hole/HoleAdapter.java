@@ -40,7 +40,7 @@ public class HoleAdapter extends RecyclerView.Adapter<HoleAdapter.VH> {
 
     @Override
     public int getItemCount() {
-        return tasks.size();
+        return tasks == null ? 0 : tasks.size();
     }
 
     static class VH extends RecyclerView.ViewHolder {

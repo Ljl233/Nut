@@ -36,6 +36,5 @@ public class HoleFragment extends Fragment {
         mRecycler.setLayoutManager(new LinearLayoutManager(this.getContext()));
         mRecycler.setAdapter(mAdapter);
 
-
     }
 }
