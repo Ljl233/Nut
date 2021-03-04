@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nut.R;
+import com.example.nut.database.RoomKt;
 import com.example.nut.database.Task;
 import com.example.nut.ui.home.HomeContract;
 import com.example.nut.ui.home.HomePresenter;
@@ -226,7 +227,6 @@ public class HomeFragment extends Fragment implements HomeContract.View {
                 if (!isChecked) {
                     task.setFinished(false);
                     mPresenter.updateTask(task, callback);
-                    //减坚果
                 }
             } else {
                 if (isChecked) {
