@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import androidx.room.Room
 import com.example.nut.R
 import com.example.nut.database.User
 import com.example.nut.database.getDatabase
@@ -45,12 +43,17 @@ class MineFragment : Fragment() {
         mTvSlogan = root.findViewById(R.id.mine_slogan)
         mTvCoin = root.findViewById(R.id.mine_coin)
 
+        val layoutUs = root.findViewById<ConstraintLayout>(R.id.layout_us)
+        layoutUs.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.detail_dest)
+        }
+
         initView()
         return root
     }
 
     private fun initView() {
-        getDatabase(requireContext()).userDao.getUser()
+        getDatabase().userDao.getUser()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : SingleObserver<List<User>> {

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity
-data class Task constructor(
+data class Task(
         @PrimaryKey
         val content: String,
         //循环时间:day,week,month,year,custom
@@ -27,7 +27,7 @@ data class Task constructor(
 )
 
 @Entity
-data class User constructor(
+data class User(
         @PrimaryKey
         val account: Int,
         var psw: Int,

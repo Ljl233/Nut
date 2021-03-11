@@ -1,7 +1,7 @@
 package com.example.nut.database
 
-import android.content.Context
 import androidx.room.*
+import com.example.nut.MyApp
 import io.reactivex.Completable
 import io.reactivex.Single
 import java.util.*
@@ -60,20 +60,18 @@ interface UserDao {
 
 @Database(entities = [Task::class, User::class], version = 1)
 @TypeConverters(Converters::class)
-abstract class TaskDatabase : RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
     abstract val taskDao: TaskDao
     abstract val userDao: UserDao
 }
 
-private lateinit var INSTANCE: TaskDatabase
+private lateinit var INSTANCE: AppDatabase
 
-fun getDatabase(context: Context): TaskDatabase {
-    synchronized(TaskDatabase::class.java) {
+fun getDatabase(): AppDatabase {
+    synchronized(AppDatabase::class.java) {
 //        if (INSTANCE == null || !INSTANCE.isOpen) {
         INSTANCE = Room.databaseBuilder(
-                context.applicationContext,
-                TaskDatabase::class.java,
-                "tasks")
+                MyApp.getAppContext(), AppDatabase::class.java, "nut_database")
                 .build()
 //        }
     }

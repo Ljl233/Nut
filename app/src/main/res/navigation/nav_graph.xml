@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_home_dest_to_create_dest"
             app:destination="@id/create_dest" />
+        <action
+            android:id="@+id/action_home_dest_to_finish_dest"
+            app:destination="@id/finish_dest" />
     </fragment>
     <fragment
         android:id="@+id/create_dest"
@@ -32,10 +35,13 @@
     <fragment
         android:id="@+id/mine_dest"
         android:name="com.example.nut.ui.mine.MineFragment"
-        android:label="mine" >
+        android:label="mine">
         <action
             android:id="@+id/action_mine_dest_to_inforFragment"
             app:destination="@id/info_dest" />
+        <action
+            android:id="@+id/action_mine_dest_to_detail_dest"
+            app:destination="@id/detail_dest" />
     </fragment>
     <fragment
         android:id="@+id/emotion_status_dest"
@@ -56,5 +62,10 @@
         android:id="@+id/finish_dest"
         android:name="com.example.nut.ui.home.finish.FinishFragment"
         android:label="finish"
-        tools:layout="@layout/fragment_finish"/>
+        tools:layout="@layout/fragment_finish" />
+    <fragment
+        android:id="@+id/detail_dest"
+        android:name="com.example.nut.ui.mine.DetailFragment"
+        android:label="detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>
